@@ -2,27 +2,33 @@ import java.io.File;
 
 public class Ejercicio2 {
 
-    public static void listarEstructura(File elemento, String sangria) {
-        System.out.println(sangria + elemento.getName());
+    public static void listarDirectorio(File directorio, String sangria) {
+        System.out.println(sangria + directorio.getName());
 
-        if (elemento.isDirectory()) { 
-            File[] contenido = elemento.listFiles();
-            if (contenido != null) {
-                for (File hijo : contenido) {
-                    listarEstructura(hijo, sangria + "\t");
-                }
+        String[] contenido = directorio.list();
+        if (contenido == null) {
+            return; // no es un directorio o está vacío
+        }
+
+        for (String nombre : contenido) {
+            File elemento = new File(directorio, nombre);
+            if (elemento.isDirectory()) {
+                listarDirectorio(elemento, sangria + "\t");
+            } else {
+                System.out.println(sangria + "\t" + nombre);
             }
         }
     }
 
     public static void main(String[] args) {
-        File rutaBase = new File(System.getProperty("user.home"), "Documentos/ADA/UD01");
-        File raiz = new File(rutaBase, "d");
+        File escritorio = new File(System.getProperty("user.home"), "Documentos");
+        File raiz = new File(escritorio, "d");
 
-        if (raiz.exists()) { 
-            listarEstructura(raiz, "");
-        } else {
-            System.out.println("No existe el directorio 'd'. Ejecuta primero el Ejercicio 1.");
+        if (!raiz.exists()) {
+            System.out.println("No se encuentra el directorio: " + raiz.getAbsolutePath());
+            return;
         }
+
+        listarDirectorio(raiz, "");
     }
 }
