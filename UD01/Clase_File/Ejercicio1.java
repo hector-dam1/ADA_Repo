@@ -11,8 +11,8 @@ public class Ejercicio1 {
 
         File d1 = new File(d, "d1");
         d1.mkdir();
-        new File(d1, "f11").createNewFile();
-        new File(d1, "f12").createNewFile();
+        new File(d1, "f11.txt").createNewFile();
+        new File(d1, "f12.txt").createNewFile();
 
         File d2 = new File(d, "d2");
         d2.mkdir();
@@ -21,7 +21,7 @@ public class Ejercicio1 {
 
         File d22 = new File(d2, "d22");
         d22.mkdir();
-        new File(d22, "f222").createNewFile();
+        new File(d22, "f222.txt").createNewFile();
 
         File d3 = new File(d, "d3");
         d3.mkdir();

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Scanner;
 
 public class Ejercicio5 {
 
@@ -17,8 +18,12 @@ public class Ejercicio5 {
     }
 
     public static void main(String[] args) {
-        File escritorio = new File(System.getProperty("user.home"), "Desktop");
-        File carpeta = new File(escritorio, "d/d1");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Dime la ruta de donde estan los txt que quieres borrar: ");
+        String directorio = sc.nextLine();
+
+        File escritorio = new File(System.getProperty("user.home"));
+        File carpeta = new File(escritorio, directorio);
 
         borrarTxt(carpeta);
     }
