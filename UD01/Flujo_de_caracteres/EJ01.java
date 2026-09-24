@@ -1,4 +1,5 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class EJ01 {
     public static void main(String[] args) throws IOException {
